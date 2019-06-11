@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN" 
+"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="news.title">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>*标题不能为空</message>
+		</field-validator>
+	</field>
+	<field name="cid">
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[(cid!=-1)]]></param>
+			<message>*请选择类型</message>
+		</field-validator>
+	</field>
+	
+	<field name="news.content">
+		<field-validator type="requiredstring">
+			<message>*内容不能为空</message>
+		</field-validator>
+	</field>
+	<field name="news.froms">
+		<field-validator type="requiredstring">
+			<message>*来源不能为空</message>
+		</field-validator>
+	</field>
+</validators>

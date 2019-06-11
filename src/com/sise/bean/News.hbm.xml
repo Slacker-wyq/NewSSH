@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.sise.bean">
+	<class name="News" table="news">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="title" type="string"></property>
+		<property name="content" type="string"></property>
+		<property name="issueTime" type="string"></property>
+		<property name="clicks" type="integer"></property>
+		<property name="froms" type="string"></property>
+		<property name="imgs" type="string"></property>
+		<many-to-one name="category" class="Category" column="category_id" lazy="false"/>
+	</class>
+</hibernate-mapping>

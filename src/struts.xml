@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.ui.theme" value="simple" /> 
+	<constant name="struts.ui.templateDir" value="template" /> 
+	<constant name="struts.ui.templateSuffix" value="ftl" /> 
+	<constant name="struts.multipart.maxSize" value="15000000"></constant>
+	<package name="sandh" extends="struts-default" namespace="/">
+		<action name="*" class="categoryAction" method="{1}">
+			<result name="list">/categoryList.jsp</result>
+			<result name="lists">/newsList.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">categoryList</param>
+			</result>
+			<result name="update">/categoryUpdate.jsp</result>
+			<result name="updates">/newsUpdate.jsp</result>
+			<result name="add">/addNews.jsp</result>
+			<result name="listspart">/newsPart.jsp</result>
+			<result name="look">/newsLook.jsp</result>
+			<result name="suc" type="redirectAction">
+				<param name="actionName">newsList</param>
+			</result>
+			<allowed-methods>newsAdd,newsAdded,newsList,newsLook,newsUpdate,newsUpdated,newsDelete,categoryAdd,categoryUpdate,categoryUpdated,categoryDelete,categoryList,listNewsPart</allowed-methods>
+		</action>
+		<!-- 管理登录 -->
+		<action name="login" class="userAction" method="login">
+			<result name="admin">/admin.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		<!-- 前端页面 -->
+		<action name="frontPage" class="frontPageAction" method="frontPage">
+			<result name="front">/frontPage.jsp</result>
+		</action>
+		<action name="frontPart" class="frontPageAction" method="frontPart">
+			<result name="part">/frontPart.jsp</result>
+		</action>
+		<action name="frontFind" class="frontPageAction" method="frontFind">
+			<result name="part">/frontPart.jsp</result>
+			<result name="front" type="redirectAction">
+				<param name="actionName">frontPage</param>
+			</result>
+		</action>
+		<action name="frontTime" class="frontPageAction" method="frontTime">
+			<result name="time">/frontPart.jsp</result>
+			<result name="front" type="redirectAction">
+				<param name="actionName">frontPage</param>
+			</result>
+		</action>
+		<action name="frontLook" class="frontPageAction" method="frontLook">
+			<result name="frontLook">/frontLook.jsp</result>
+		</action>
+		<action name="newsAdded" class="categoryAction" method="newsAdded">
+			<result name="success" type="redirectAction">
+				<param name="actionName">newsList</param>
+			</result>
+			<result name="input"  type="redirectAction">
+				<param name="actionName">newsAdd</param>
+			</result>
+		</action>
+	</package>
+</struts>
